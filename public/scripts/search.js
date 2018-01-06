@@ -1,12 +1,12 @@
 $('#campground-search').on('input', function() {
-    var search = $(this).serialize();
-    if(search === "search=") {
-        search = "all"
-    }
-    $.get('/campgrounds?' + search, function(data) {
-        $('#campground-grid').html('');
-        data.forEach(function(campground) {
-            $('#campground-grid').append(`
+  var search = $(this).serialize();
+  if(search === "search=") {
+    search = "all"
+  }
+  $.get('/campgrounds?' + search, function(data) {
+    $('#campground-grid').html('');
+    data.forEach(function(campground) {
+      $('#campground-grid').append(`
         <div class="col-md-3 col-sm-6">
           <div class="thumbnail">
             <img src="${ campground.image }">
@@ -19,10 +19,10 @@ $('#campground-search').on('input', function() {
           </div>
         </div>
       `);
-        });
     });
+  });
 });
 
 $('#campground-search').submit(function(event) {
-    event.preventDefault();
+  event.preventDefault();
 });

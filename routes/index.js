@@ -1,8 +1,7 @@
 var express = require("express");
 var router  = express.Router();
 var passport = require("passport");
-var user = require("../models/user");
-var middleware = require("../middleware");
+var User = require("../models/user");
 
 //root route
 router.get("/", function(req, res){
@@ -11,48 +10,48 @@ router.get("/", function(req, res){
 
 // show register form
 router.get("/register", function(req, res){
-    res.render("register");
+   res.render("register", {page: 'register'}); 
 });
 
 //handle sign up logic
 router.post("/register", function(req, res){
-    var newUser = new user({username: req.body.username});
-    user.register(newUser, req.body.password, function(err, user){
+    var newUser = new User({username: req.body.username});
+    if(req.body.adminCode === process.env.ADMIN_CODE) {
+      newUser.isAdmin = true;
+    }
+    User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
-            return res.render("register");
+            return res.render("register", {error: err.message});
         }
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/campgrounds");
+           req.flash("success", "Successfully Signed Up! Nice to meet you " + req.body.username);
+           res.redirect("/campgrounds"); 
         });
     });
 });
 
 //show login form
 router.get("/login", function(req, res){
-    res.render("login");
+   res.render("login", {page: 'login'}); 
 });
 
 //handling login logic
-router.post("/login", passport.authenticate("local",
+router.post("/login", passport.authenticate("local", 
     {
         successRedirect: "/campgrounds",
-        failureRedirect: "/login"
+        failureRedirect: "/login",
+        failureFlash: true,
+        successFlash: 'Welcome to Syedpur!'
     }), function(req, res){
 });
 
 // logout route
 router.get("/logout", function(req, res){
-    req.logout();
-    res.redirect("/campgrounds");
+   req.logout();
+   req.flash("success", "See you later!");
+   res.redirect("/campgrounds");
 });
 
-//middleware
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
 
 module.exports = router;

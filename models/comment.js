@@ -1,14 +1,15 @@
 var mongoose = require("mongoose");
 
-var commentSchema = new mongoose.Schema({
+var commentSchema = mongoose.Schema({
     text: String,
+    createdAt: { type: Date, default: Date.now },
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "comment"
+            ref: "User"
         },
         username: String
     }
-});
+}, { usePushEach: true });
 
-module.exports = mongoose.model("comment", commentSchema);
+module.exports = mongoose.model("Comment", commentSchema);
