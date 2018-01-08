@@ -18,6 +18,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 - [ ] Add Video page
 - [ ] Add Discussion Boards - Community
 - [ ] Add Google Sign-In and Facebook Sign-in to Login page
+- [ ] Add an SSL Certificate
 
 
 ### Prerequisites
