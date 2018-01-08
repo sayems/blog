@@ -1,5 +1,23 @@
 # blog
 
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+---
+
+### To-Do-List
+
+- [ ] Add Password reset
+- [ ] Add User Profile 
+- [ ] Add Admin role (user roles)
+- [ ] Add Pagination on video/image and blog page
+- [ ] Add Contact forms
+- [ ] Add Search bar
+- [ ] Add Social Media Buttons / Share Buttons
+- [ ] Add Image uploader / Video uploader
+- [ ] Add Video page
+- [ ] Add Discussion Boards - Community
+- [ ] Add Google Sign-In and Facebook Sign-in to Login page
 
 
 ### Prerequisites
